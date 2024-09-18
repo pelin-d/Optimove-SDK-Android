@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="tamarColor">#ccff00</color>
+    <color name="colorPrimary">@color/blue</color>
+    <color name="colorPrimaryDark">@color/darkBlue</color>
+    <color name="colorAccent">@color/orange</color>
+
+    <!-- Optimove brand colours -->
+    <color name="orange">#ff8560</color>
+    <color name="lightBlue">#a8b8cd</color>
+    <color name="blue">#8399c4</color>
+    <color name="darkBlue">#6b7c9e</color>
+    <color name="white">#ececec</color>
+    <color name="gray">#a8a9ac</color>
+    <color name="black">#1d1d1d</color>
+
 </resources>
