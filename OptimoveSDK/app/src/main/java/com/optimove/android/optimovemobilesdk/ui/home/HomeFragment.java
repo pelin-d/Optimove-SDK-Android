@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.textfield.TextInputEditText;
 import com.optimove.android.Optimove;
 import com.optimove.android.optimovemobilesdk.EventReport;
 import com.optimove.android.optimovemobilesdk.SimpleCustomEvent;
@@ -20,29 +21,37 @@ import com.optimove.android.optimovemobilesdk.databinding.FragmentHomeBinding;
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
+    HomeViewModel homeViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        HomeViewModel homeViewModel =
-                new ViewModelProvider(this).get(HomeViewModel.class);
+
+        homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         final MaterialButton addItemButton = binding.addItemButton;
         final ImageButton cartButton = binding.cartButton;
+        final TextInputEditText editText = binding.textInputEditText;
 
-        addItemButton.setOnClickListener(this::reportAddItem);
+        addItemButton.setOnClickListener(v -> onAddItem(v, String.valueOf(editText.getText())));
         cartButton.setOnClickListener(this::reportCartVisit);
 
+        homeViewModel.getUiState().observe(getViewLifecycleOwner(), uiState -> {
+            addItemToCart(uiState.getItemName());
+        });
 
-//        final TextView textView = binding.textHome;
-//        homeViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 
+    public void addItemToCart(String itemName) {
+
+    }
+
     // TODO make custom event
-    public void reportAddItem(View v) {
+    public void onAddItem(View v, String itemName) {
+        homeViewModel.getUiState().setValue(new HomeViewModel.HomeUiState(itemName));
         reportEvent(v);
     }
 

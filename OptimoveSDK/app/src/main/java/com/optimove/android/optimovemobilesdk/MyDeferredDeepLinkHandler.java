@@ -1,6 +1,5 @@
 package com.optimove.android.optimovemobilesdk;
 
-
 import android.content.Context;
 import android.util.Log;
 
@@ -8,7 +7,6 @@ import androidx.annotation.Nullable;
 
 import com.optimove.android.optimobile.DeferredDeepLinkHandlerInterface;
 import com.optimove.android.optimobile.DeferredDeepLinkHelper;
-
 
 public class MyDeferredDeepLinkHandler implements DeferredDeepLinkHandlerInterface {
     private static final String TAG = MyDeferredDeepLinkHandler.class.getName();
