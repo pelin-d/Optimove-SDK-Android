@@ -245,26 +245,6 @@ public class MainActivityOld extends AppCompatActivity {
         new Thread(runnable).start();
     }
 
-    private static class SimpleCustomEvent extends OptimoveEvent {
-
-        SimpleCustomEvent() {
-        }
-
-        @Override
-        public String getName() {
-            return "Simple cUSTOM_Event     ";
-        }
-
-        @Override
-        public Map<String, Object> getParameters() {
-            HashMap<String, Object> result = new HashMap<>();
-            String val = "  some_string  ";
-            result.put("strinG_param", val);
-            result.put("number_param", 42);
-            return result;
-        }
-    }
-
     private void hideIrrelevantInputs() {
         if (!Optimove.getConfig().isPreferenceCenterConfigured()) {
             Button getPrefsBtn = (Button) findViewById(R.id.getPreferences);

@@ -4,8 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -15,7 +13,6 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.optimove.android.Optimove;
-import com.optimove.android.optimovemobilesdk.R;
 import com.optimove.android.optimovemobilesdk.databinding.FragmentProfileBinding;
 
 import java.util.Objects;
@@ -32,13 +29,8 @@ public class ProfileFragment extends Fragment {
         binding = FragmentProfileBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextInputEditText editTextUserId = binding.editTextUserId;
-        final TextInputEditText editTextUserEmail = binding.editTextUserEmail;
         final MaterialButton buttonUpdateUser = binding.buttonUpdateUser;
-
-
         buttonUpdateUser.setOnClickListener(this::updateUserId);
-
 
         return root;
     }
