@@ -19,6 +19,7 @@ import com.optimove.android.Optimove;
 import com.optimove.android.main.events.OptimoveEvent;
 import com.optimove.android.optimobile.InAppInboxItem;
 import com.optimove.android.optimobile.OptimoveInApp;
+import com.optimove.android.optimovemobilesdk.constants.Constants;
 import com.optimove.android.preferencecenter.Channel;
 import com.optimove.android.preferencecenter.OptimovePreferenceCenter;
 import com.optimove.android.preferencecenter.PreferenceUpdate;
@@ -33,8 +34,8 @@ import java.util.Map;
 @SuppressLint("SetTextI18n")
 public class MainActivityOld extends AppCompatActivity {
 
-    static final String TAG = "TestAppMainActvity";
-    static final String PC_TAG = "OptimovePC";
+    static final String TAG = Constants.TAG;
+    static final String PC_TAG = Constants.PC_TAG;
     private static final int WRITE_EXTERNAL_PERMISSION_REQUEST_CODE = 169;
 
     private TextView outputTv;

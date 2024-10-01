@@ -7,22 +7,18 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.snackbar.Snackbar;
-import com.optimove.android.Optimove;
-import com.optimove.android.optimovemobilesdk.EventReport;
-import com.optimove.android.optimovemobilesdk.SimpleCustomEvent;
 import com.optimove.android.optimovemobilesdk.databinding.FragmentCartBinding;
+import com.optimove.android.optimovemobilesdk.ui.BaseFragment;
 import com.optimove.android.optimovemobilesdk.ui.home.HomeViewModel;
 
 import java.util.List;
 import java.util.Objects;
 
-public class CartFragment extends Fragment {
+public class CartFragment extends BaseFragment {
 
     private FragmentCartBinding binding;
     HomeViewModel viewModel;
@@ -34,6 +30,8 @@ public class CartFragment extends Fragment {
 
         binding = FragmentCartBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+        setScreenInfo("Cart");
 
         setRecyclerView(root.getContext());
 
@@ -52,24 +50,6 @@ public class CartFragment extends Fragment {
         viewModel.getUiState().observe(getViewLifecycleOwner(), uiState -> {
             adapter.notifyDataSetChanged();
         });
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        // TODO make custom event for visiting the cart page
-        reportEvent(getView());
-    }
-
-    public void reportEvent(View view) {
-        if (view == null) return;
-        showMessage("Reporting Custom Event for Visitor without optional value");
-        EventReport.runFromWorker(() -> Optimove.getInstance().reportEvent(new SimpleCustomEvent()));
-        EventReport.runFromWorker(() -> Optimove.getInstance().reportEvent("Event_No ParaMs     "));
-    }
-
-    public void showMessage(String message) {
-        Snackbar.make(binding.getRoot(), message, Snackbar.LENGTH_SHORT).show();
     }
 
     @Override

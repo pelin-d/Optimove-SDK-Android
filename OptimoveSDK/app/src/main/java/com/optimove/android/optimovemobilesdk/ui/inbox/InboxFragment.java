@@ -8,17 +8,16 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.google.android.material.snackbar.Snackbar;
 import com.optimove.android.optimobile.InAppInboxItem;
 import com.optimove.android.optimobile.OptimoveInApp;
 import com.optimove.android.optimovemobilesdk.databinding.FragmentInboxBinding;
+import com.optimove.android.optimovemobilesdk.ui.BaseFragment;
 
 import java.util.List;
 
-public class InboxFragment extends Fragment {
+public class InboxFragment extends BaseFragment {
 
     private FragmentInboxBinding binding;
 
@@ -31,6 +30,8 @@ public class InboxFragment extends Fragment {
 
         binding = FragmentInboxBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+        setScreenInfo("Inbox");
 
         ImageButton deleteInboxItemsButton = binding.deleteInboxItemsButton;
         ImageButton markInboxItemsReadButton = binding.markInboxItemsReadButton;
@@ -68,10 +69,6 @@ public class InboxFragment extends Fragment {
             OptimoveInApp.getInstance().deleteMessageFromInbox(items.get(i));
         }
 
-    }
-
-    public void showMessage(String message) {
-        Snackbar.make(binding.getRoot(), message, Snackbar.LENGTH_SHORT).show();
     }
 
     @Override

@@ -6,17 +6,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.optimove.android.Optimove;
 import com.optimove.android.optimovemobilesdk.databinding.FragmentProfileBinding;
+import com.optimove.android.optimovemobilesdk.ui.BaseFragment;
 
 import java.util.Objects;
 
-public class ProfileFragment extends Fragment {
+public class ProfileFragment extends BaseFragment {
 
     private FragmentProfileBinding binding;
 
@@ -27,6 +26,8 @@ public class ProfileFragment extends Fragment {
 
         binding = FragmentProfileBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+        setScreenInfo("Profile");
 
         final MaterialButton buttonUpdateUser = binding.buttonUpdateUser;
         buttonUpdateUser.setOnClickListener(this::updateUserId);
@@ -39,19 +40,15 @@ public class ProfileFragment extends Fragment {
         String userEmail = Objects.requireNonNull(binding.editTextUserEmail.getText()).toString();
 
         if (userEmail.isEmpty()) {
-            showMessage("Calling setUserId");
+            showMessage(binding.getRoot(), "Calling setUserId");
             Optimove.getInstance().setUserId(userId);
         } else if (userId.isEmpty()) {
-            showMessage("Calling setUserEmail");
+            showMessage(binding.getRoot(), "Calling setUserEmail");
             Optimove.getInstance().setUserEmail(userEmail);
         } else {
-            showMessage("Calling registerUser");
+            showMessage(binding.getRoot(), "Calling registerUser");
             Optimove.getInstance().registerUser(userId, userEmail);
         }
-    }
-
-    public void showMessage(String message) {
-        Snackbar.make(binding.getRoot(), message, Snackbar.LENGTH_SHORT).show();
     }
 
     @Override

@@ -7,24 +7,19 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
-import com.optimove.android.Optimove;
-import com.optimove.android.optimovemobilesdk.EventReport;
 import com.optimove.android.optimovemobilesdk.R;
-import com.optimove.android.optimovemobilesdk.SimpleCustomEvent;
 import com.optimove.android.optimovemobilesdk.databinding.FragmentHomeBinding;
+import com.optimove.android.optimovemobilesdk.ui.BaseFragment;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends BaseFragment {
 
     private FragmentHomeBinding binding;
     HomeViewModel homeViewModel;
@@ -36,6 +31,8 @@ public class HomeFragment extends Fragment {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+        setScreenInfo("Home");
 
         final MaterialButton addItemButton = binding.addItemButton;
         final ImageButton cartButton = binding.cartButton;
@@ -63,17 +60,6 @@ public class HomeFragment extends Fragment {
 
     public void visitCart(View v) {
         Navigation.findNavController(v).navigate(R.id.action_navigation_home_to_navigation_cart);
-    }
-
-    public void reportEvent(View view) {
-        if (view == null) return;
-        showMessage("Reporting Custom Event for Visitor without optional value");
-        EventReport.runFromWorker(() -> Optimove.getInstance().reportEvent(new SimpleCustomEvent()));
-        EventReport.runFromWorker(() -> Optimove.getInstance().reportEvent("Event_No ParaMs     "));
-    }
-
-    public void showMessage(String message) {
-        Snackbar.make(binding.getRoot(), message, Snackbar.LENGTH_SHORT).show();
     }
 
     @Override
