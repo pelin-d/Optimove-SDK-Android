@@ -92,7 +92,6 @@ public class MainActivityOld extends AppCompatActivity {
         runFromWorker(() -> Optimove.getInstance().reportEvent("Event_No ParaMs     "));
     }
 
-    // added ok
     public void updateUserId(View view) {
         EditText uidInput = findViewById(R.id.userIdInput);
         EditText emailInput = findViewById(R.id.userEmailInput);

@@ -1,14 +1,9 @@
 <resources>
     <string name="app_name">SDK</string>
-    <string name="optimove_logo_desc">optimove logo</string>
-    <string name="inbox">inbox</string>
-    <string name="inbox_name">Inbox</string>
-    <string name="title_activity_main3">MainActivity3</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_inbox">Inbox</string>
-    <string name="title_profile">Profile</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="home">Home</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="inbox">Inbox</string>
+    <string name="profile">Profile</string>
     <string name="email">Email</string>
     <string name="user_id">User ID</string>
     <string name="update">Update</string>
@@ -24,5 +19,6 @@
     <string name="buy_all">Buy All</string>
     <string name="add_item_to_cart">Add Item to Cart</string>
     <string name="welcome">Welcome</string>
-    <string name="cart">cart</string>
+    <string name="cart">Cart</string>
+    <string name="welcome_message">Welcome to the Optimove Android SDK test</string>
 </resources>

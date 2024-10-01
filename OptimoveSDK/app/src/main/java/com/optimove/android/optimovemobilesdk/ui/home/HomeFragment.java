@@ -9,14 +9,20 @@ import android.widget.ImageButton;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.optimove.android.Optimove;
 import com.optimove.android.optimovemobilesdk.EventReport;
+import com.optimove.android.optimovemobilesdk.R;
 import com.optimove.android.optimovemobilesdk.SimpleCustomEvent;
 import com.optimove.android.optimovemobilesdk.databinding.FragmentHomeBinding;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 public class HomeFragment extends Fragment {
 
@@ -26,7 +32,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
+        homeViewModel = new ViewModelProvider(requireActivity()).get(HomeViewModel.class);
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
@@ -36,28 +42,27 @@ public class HomeFragment extends Fragment {
         final TextInputEditText editText = binding.textInputEditText;
 
         addItemButton.setOnClickListener(v -> onAddItem(v, String.valueOf(editText.getText())));
-        cartButton.setOnClickListener(this::reportCartVisit);
+        cartButton.setOnClickListener(this::visitCart);
 
-        homeViewModel.getUiState().observe(getViewLifecycleOwner(), uiState -> {
-            addItemToCart(uiState.getItemName());
-        });
+//        homeViewModel.getUiState().observe(getViewLifecycleOwner(), uiState -> {
+//
+//        });
 
         return root;
     }
 
-    public void addItemToCart(String itemName) {
-
-    }
-
-    // TODO make custom event
     public void onAddItem(View v, String itemName) {
-        homeViewModel.getUiState().setValue(new HomeViewModel.HomeUiState(itemName));
+        List<String> itemList = Objects.requireNonNull(homeViewModel.getUiState().getValue()).getItemList();
+        itemList.add(itemName);
+
+        homeViewModel.getUiState().setValue(new HomeViewModel.HomeUiState(itemName, itemList));
+
+        // TODO make custom event
         reportEvent(v);
     }
 
-    // TODO make custom event
-    public void reportCartVisit(View v) {
-        reportEvent(v);
+    public void visitCart(View v) {
+        Navigation.findNavController(v).navigate(R.id.action_navigation_home_to_navigation_cart);
     }
 
     public void reportEvent(View view) {
