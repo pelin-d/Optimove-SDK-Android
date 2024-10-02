@@ -36,6 +36,7 @@ public class BaseFragment extends Fragment {
     /**
      Call this in the onCreate() method in the Fragments to report screen visits.
      * @param screenName the name of the screen visited. Setting this null will prevent the screen info being sent.
+     * @param screenCategory the screen category it belongs to.
      */
     public void setScreenInfo(String screenName, String screenCategory) {
         this.screenName = screenName;
@@ -47,8 +48,7 @@ public class BaseFragment extends Fragment {
      * @param screenName the name of the screen visited. Setting this null will prevent the screen info being sent.
      */
     public void setScreenInfo(String screenName) {
-        this.screenName = screenName;
-        this.screenCategory = null;
+        setScreenInfo(screenName, null);
     }
 
     public void reportEvent(View v) {

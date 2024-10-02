@@ -21,10 +21,10 @@
         tools:layout="@layout/fragment_cart" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.optimove.android.optimovemobilesdk.ui.dashboard.DashboardFragment"
-        android:label="@string/dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_gaming"
+        android:name="com.optimove.android.optimovemobilesdk.ui.gaming.GamingFragment"
+        android:label="@string/gaming"
+        tools:layout="@layout/fragment_gaming" />
 
     <fragment
         android:id="@+id/navigation_inbox"

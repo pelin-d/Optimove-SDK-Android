@@ -1,4 +1,4 @@
-package com.optimove.android.optimovemobilesdk.ui.dashboard;
+package com.optimove.android.optimovemobilesdk.ui.gaming;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,22 +8,22 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.optimove.android.optimovemobilesdk.databinding.FragmentDashboardBinding;
+import com.optimove.android.optimovemobilesdk.databinding.FragmentGamingBinding;
 import com.optimove.android.optimovemobilesdk.ui.BaseFragment;
 
-public class DashboardFragment extends BaseFragment {
+public class GamingFragment extends BaseFragment {
 
-    private FragmentDashboardBinding binding;
+    private FragmentGamingBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        DashboardViewModel dashboardViewModel =
-                new ViewModelProvider(this).get(DashboardViewModel.class);
+        GamingViewModel gamingViewModel =
+                new ViewModelProvider(this).get(GamingViewModel.class);
 
-        binding = FragmentDashboardBinding.inflate(inflater, container, false);
+        binding = FragmentGamingBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        setScreenInfo("Dashboard");
+        setScreenInfo("Gaming");
 
         return root;
     }

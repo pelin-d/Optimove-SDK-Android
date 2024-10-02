@@ -7,18 +7,18 @@
         android:title="@string/home" />
 
     <item
-        android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:id="@+id/navigation_gaming"
+        android:icon="@drawable/baseline_videogame_asset_24"
         android:title="@string/dashboard" />
 
     <item
         android:id="@+id/navigation_inbox"
-        android:icon="@drawable/twotone_inbox_24"
+        android:icon="@drawable/baseline_inbox_24"
         android:title="@string/inbox" />
 
     <item
         android:id="@+id/navigation_profile"
-        android:icon="@drawable/baseline_person_outline_24"
+        android:icon="@drawable/baseline_person_24"
         android:title="@string/profile" />
 
 </menu>

@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.optimove.android.optimobile.InAppInboxItem;
 import com.optimove.android.optimobile.OptimoveInApp;
+import com.optimove.android.optimovemobilesdk.constants.Constants;
 import com.optimove.android.optimovemobilesdk.databinding.FragmentInboxBinding;
 import com.optimove.android.optimovemobilesdk.ui.BaseFragment;
 
@@ -21,7 +22,7 @@ public class InboxFragment extends BaseFragment {
 
     private FragmentInboxBinding binding;
 
-    static final String TAG = "TestAppMainActvity";
+    static final String TAG = Constants.TAG;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -45,24 +46,24 @@ public class InboxFragment extends BaseFragment {
     public void readInbox(View view) {
         List<InAppInboxItem> items = OptimoveInApp.getInstance().getInboxItems();
         if (items.size() == 0) {
-            Log.d(TAG, "no inbox items!");
+            Log.d(TAG, "No items in inbox");
             return;
         }
         for (int i = 0; i < items.size(); i++) {
             InAppInboxItem item = items.get(i);
-            Log.d(TAG, "title: " + item.getTitle() + ", isRead: " + item.isRead());
+            Log.d(TAG, "Title: " + item.getTitle() + ", isRead: " + item.isRead());
         }
     }
 
     public void markInboxAsRead(View view) {
-        Log.d(TAG, "mark  all inbox read");
+        Log.d(TAG, "Mark every inbox item as read");
         OptimoveInApp.getInstance().markAllInboxItemsAsRead();
     }
 
     public void deleteInbox(View view) {
         List<InAppInboxItem> items = OptimoveInApp.getInstance().getInboxItems();
         if (items.size() == 0) {
-            Log.d(TAG, "no inbox items!");
+            Log.d(TAG, "No items in inbox");
             return;
         }
         for (int i = 0; i < items.size(); i++) {

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">SDK</string>
     <string name="home">Home</string>
-    <string name="dashboard">Dashboard</string>
+    <string name="gaming">Gaming</string>
     <string name="inbox">Inbox</string>
     <string name="profile">Profile</string>
     <string name="email">Email</string>
@@ -21,4 +21,8 @@
     <string name="welcome">Welcome</string>
     <string name="cart">Cart</string>
     <string name="welcome_message">Welcome to the Optimove Android SDK test</string>
+    <string name="withdraw">Withdraw</string>
+    <string name="deposit">Deposit</string>
+    <string name="balance_with_colon">Balance:</string>
+    <string name="spin_the_wheel">Spin the Wheel</string>
 </resources>
