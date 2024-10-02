@@ -9,7 +9,7 @@
     <item
         android:id="@+id/navigation_gaming"
         android:icon="@drawable/baseline_videogame_asset_24"
-        android:title="@string/dashboard" />
+        android:title="@string/gaming" />
 
     <item
         android:id="@+id/navigation_inbox"
