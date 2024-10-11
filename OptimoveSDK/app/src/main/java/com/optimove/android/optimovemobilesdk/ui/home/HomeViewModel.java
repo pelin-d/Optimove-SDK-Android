@@ -3,6 +3,8 @@ package com.optimove.android.optimovemobilesdk.ui.home;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.optimove.android.optimobile.InAppInboxItem;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,26 +14,20 @@ public class HomeViewModel extends ViewModel {
 
     public MutableLiveData<HomeUiState> getUiState() {
         if (uiState == null) {
-            uiState = new MutableLiveData<>(new HomeUiState("", new ArrayList<>()));
+            uiState = new MutableLiveData<>(new HomeUiState(new ArrayList<>()));
         }
         return uiState;
     }
 
     public static class HomeUiState {
 
-        private final String lastItemName;
-        private final List<String> itemList;
+        private final List<MenuItem> itemList;
 
-        public HomeUiState(String lastItemName, List<String> itemList) {
-            this.lastItemName = lastItemName;
+        public HomeUiState(List<MenuItem> itemList) {
             this.itemList = itemList;
         }
 
-        public String getLastItemName() {
-            return lastItemName;
-        }
-
-        public List<String> getItemList() {
+        public List<MenuItem> getItemList() {
             return itemList;
         }
 

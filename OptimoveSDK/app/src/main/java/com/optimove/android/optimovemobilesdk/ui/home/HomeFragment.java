@@ -1,25 +1,26 @@
 package com.optimove.android.optimovemobilesdk.ui.home;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.button.MaterialButton;
-import com.google.android.material.textfield.TextInputEditText;
 import com.optimove.android.optimovemobilesdk.R;
 import com.optimove.android.optimovemobilesdk.databinding.FragmentHomeBinding;
 import com.optimove.android.optimovemobilesdk.ui.BaseFragment;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class HomeFragment extends BaseFragment {
+public class HomeFragment extends BaseFragment implements HomeAdapter.OnItemClickListener {
 
     private FragmentHomeBinding binding;
     HomeViewModel homeViewModel;
@@ -34,32 +35,31 @@ public class HomeFragment extends BaseFragment {
 
         setScreenInfo("Home");
 
-        final MaterialButton addItemButton = binding.addItemButton;
-        final ImageButton cartButton = binding.cartButton;
-        final TextInputEditText editText = binding.textInputEditText;
-
-        addItemButton.setOnClickListener(v -> onAddItem(v, String.valueOf(editText.getText())));
-        cartButton.setOnClickListener(this::visitCart);
-
-//        homeViewModel.getUiState().observe(getViewLifecycleOwner(), uiState -> {
-//
-//        });
+        setMenu(root.getContext());
 
         return root;
     }
 
-    public void onAddItem(View v, String itemName) {
-        List<String> itemList = Objects.requireNonNull(homeViewModel.getUiState().getValue()).getItemList();
-        itemList.add(itemName);
+    private void setMenu(Context context) {
+        final RecyclerView recyclerView = binding.recyclerView;
 
-        homeViewModel.getUiState().setValue(new HomeViewModel.HomeUiState(itemName, itemList));
+        List<MenuItem> items = new ArrayList<>();
+        items.add(new MenuItem("QA Screen", R.drawable.baseline_dashboard_24, R.id.action_navigation_home_to_navigation_dashboard));
+        items.add(new MenuItem("User Info", R.drawable.baseline_person_24, R.id.action_navigation_home_to_navigation_profile));
+        items.add(new MenuItem("Geofencing", R.drawable.baseline_person_24, R.id.action_navigation_home_to_navigation_location));
+//        items.add(new MenuItem("Gaming", R.drawable.baseline_videogame_asset_24, R.id.action_navigation_home_to_navigation_gaming));
 
-        // TODO make custom event
-        reportEvent(v);
+        HomeAdapter adapter = new HomeAdapter(items, this);
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        recyclerView.setAdapter(adapter);
     }
 
-    public void visitCart(View v) {
-        Navigation.findNavController(v).navigate(R.id.action_navigation_home_to_navigation_cart);
+    @Override
+    public void onClick(MenuItem item) {
+        int actionId = item.getActionId();
+        if (actionId != 0) {
+            Navigation.findNavController(getView()).navigate(actionId);
+        }
     }
 
     @Override

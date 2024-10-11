@@ -7,33 +7,25 @@
     android:background="@color/white"
     tools:context=".ui.inbox.InboxFragment">
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/my_toolbar"
+        android:id="@+id/inbox_title_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/toolbar_title"
-            style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
-            android:layout_width="match_parent"
+            android:id="@+id/inbox_title"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
             android:text="@string/inbox"
-            android:textAlignment="textStart"
-            android:fontFamily="@font/montserrat_semibold"
+            android:textAppearance="@style/Title"
+            android:layout_marginTop="48dp"
+            android:layout_marginBottom="48dp"
+            android:layout_marginStart="32dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -41,7 +33,7 @@
             android:id="@+id/markInboxItemsReadButton"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="32dp"
             android:contentDescription="@string/mark_inbox_as_read"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -69,13 +61,16 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/my_toolbar">
+        app:layout_constraintTop_toBottomOf="@+id/inbox_title_layout">
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
         </androidx.recyclerview.widget.RecyclerView>
 
     </LinearLayout>

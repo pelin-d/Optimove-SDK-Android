@@ -7,6 +7,7 @@
     <!-- Optimove brand colours -->
     <color name="orange">#ff8560</color>
     <color name="lightBlue">#a8b8cd</color>
+    <color name="lightLightBlue">#d7dde0</color>
     <color name="blue">#8399c4</color>
     <color name="darkBlue">#6b7c9e</color>
     <color name="white">#ececec</color>

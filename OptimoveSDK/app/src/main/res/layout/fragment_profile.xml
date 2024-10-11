@@ -7,18 +7,27 @@
     tools:context=".ui.profile.ProfileFragment"
     android:background="@color/white">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="64dp"
-        android:contentDescription="@string/profile"
-        android:scaleType="fitXY"
-        android:src="@drawable/baseline_person_outline_24"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/profile_title_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingVertical="48dp"
+        android:paddingHorizontal="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tint="@color/darkBlue" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/user_info"
+            android:textAppearance="@style/Title"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/layout_edit_text_user_id"
@@ -26,18 +35,18 @@
         app:layout_constraintWidth_max="400dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:autofillHints="username"
         android:hint="@string/user_id"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/profile_title_layout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox" >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text_user_id"
+            android:textAppearance="@style/Text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -61,6 +70,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/edit_text_user_email"
+            android:textAppearance="@style/Text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -71,6 +81,8 @@
         android:layout_height="50dp"
         android:layout_marginTop="32dp"
         android:text="@string/update"
+        android:textAppearance="@style/ButtonText"
+        app:layout_constraintEnd_toEndOf="@+id/layout_edit_text_user_email"
         app:layout_constraintStart_toStartOf="@+id/layout_edit_text_user_email"
         app:layout_constraintTop_toBottomOf="@+id/layout_edit_text_user_email" />
 

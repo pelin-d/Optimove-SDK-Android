@@ -7,126 +7,191 @@
     tools:context=".ui.gaming.GamingFragment"
     android:background="@color/white">
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/balanceCard"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/gaming_title_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        android:backgroundTint="@color/darkBlue"
+        android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <TextView
+            android:id="@+id/gaming_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/balance"
+            android:textAppearance="@style/Title"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="48dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/balanceText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="£100"
+            android:textAppearance="@style/Title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/gaming_title" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:background="@color/darkBlue">
+            android:layout_marginTop="32dp"
+            android:weightSum="11"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/balanceText">
 
-            <TextView
-                android:id="@+id/balanceText"
+            <Space
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/balance_with_colon"
-                android:textAppearance="@style/TitleWhite"
+                android:layout_weight="1" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/withdrawButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_weight="4"
+                android:backgroundTint="@color/orange"
+                android:maxWidth="320dp"
+                android:text="@string/withdraw"
+                android:textAppearance="@style/ButtonText"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/finishShoppingButton"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/balanceValueText"
+            <Space
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:textAppearance="@style/TitleWhite"
-                app:layout_constraintStart_toEndOf="@+id/balanceText"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_weight="1" />
 
-            <LinearLayout
-                android:id="@+id/linearLayout"
-                android:layout_width="match_parent"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/depositButton"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:weightSum="11"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:layout_weight="4"
+                android:backgroundTint="@color/blue"
+                android:maxWidth="320dp"
+                android:text="@string/deposit"
+                android:textAppearance="@style/ButtonText"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/balanceText">
+                app:layout_constraintStart_toEndOf="@+id/deleteShoppingButton"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/withdrawButton"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:layout_weight="4"
-                    android:backgroundTint="@color/red"
-                    android:maxWidth="320dp"
-                    android:text="@string/withdraw"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/finishShoppingButton"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/depositButton"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="8dp"
-                    android:layout_weight="4"
-                    android:backgroundTint="@color/green"
-                    android:maxWidth="320dp"
-                    android:text="@string/deposit"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/deleteShoppingButton"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <Space
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-            </LinearLayout>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </com.google.android.material.card.MaterialCardView>
-
-    <TextView
-        android:id="@+id/betTitle"
-        android:textAppearance="@style/Title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/spin_the_wheel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/balanceCard" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/spinWheel"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/wheel_decorator"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/betTitle">
+        </LinearLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/rollDiceLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gaming_title_layout" >
+
+        <TextView
+            android:id="@+id/rollDiceTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:layout_marginStart="32dp"
+            android:textAppearance="@style/Title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@string/roll_dice" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/dice_hint_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:contentDescription="@string/rules"
+            app:layout_constraintBottom_toBottomOf="@+id/rollDiceTitle"
+            app:layout_constraintStart_toEndOf="@+id/rollDiceTitle"
+            app:layout_constraintTop_toTopOf="@+id/rollDiceTitle" >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/grey_circle_background"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="14dp"
+                android:contentDescription="@string/rules"
+                android:src="@drawable/baseline_question_mark_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/diceImage"
+            android:layout_width="100dp"
+            android:layout_height="120dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/dice_1"
+            android:contentDescription="@string/dice_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/rollDiceTitle" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layout_edit_text_dice_bet"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:hint="@string/bet_amount"
+            android:inputType="text"
+            app:layout_constraintBottom_toBottomOf="@+id/diceImage"
+            app:layout_constraintStart_toEndOf="@+id/diceImage"
+            app:layout_constraintTop_toTopOf="@+id/diceImage"
+            app:layout_constraintWidth_max="400dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edit_text_dice_bet"
+                android:textAppearance="@style/Text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/rollDiceButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="320dp"
+            android:text="@string/roll"
+            android:textAppearance="@style/ButtonText"
+            app:layout_constraintStart_toStartOf="@+id/layout_edit_text_dice_bet"
+            app:layout_constraintTop_toBottomOf="@+id/diceImage" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

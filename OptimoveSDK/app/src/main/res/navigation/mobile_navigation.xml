@@ -11,20 +11,25 @@
         android:label="@string/home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_navigation_home_to_navigation_cart"
-            app:destination="@id/navigation_cart" />
+            android:id="@+id/action_navigation_home_to_navigation_gaming"
+            app:destination="@id/navigation_gaming" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_profile"
+            app:destination="@id/navigation_profile" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_dashboard"
+            app:destination="@id/navigation_dashboard" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_location"
+            app:destination="@id/navigation_location" />
     </fragment>
-    <fragment
-        android:id="@+id/navigation_cart"
-        android:name="com.optimove.android.optimovemobilesdk.ui.cart.CartFragment"
-        android:label="@string/cart"
-        tools:layout="@layout/fragment_cart" />
 
     <fragment
         android:id="@+id/navigation_gaming"
         android:name="com.optimove.android.optimovemobilesdk.ui.gaming.GamingFragment"
         android:label="@string/gaming"
-        tools:layout="@layout/fragment_gaming" />
+        tools:layout="@layout/fragment_gaming" >
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_inbox"
@@ -37,5 +42,17 @@
         android:name="com.optimove.android.optimovemobilesdk.ui.profile.ProfileFragment"
         android:label="@string/profile"
         tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/navigation_dashboard"
+        android:name="com.optimove.android.optimovemobilesdk.ui.dashboard.DashboardFragment"
+        android:label="@string/dashboard"
+        tools:layout="@layout/fragment_dashboard" />
+
+    <fragment
+        android:id="@+id/navigation_location"
+        android:name="com.optimove.android.optimovemobilesdk.ui.location.LocationFragment"
+        android:label="@string/my_location"
+        tools:layout="@layout/fragment_location" />
 
 </navigation>
