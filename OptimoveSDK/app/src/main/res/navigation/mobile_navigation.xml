@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_navigation_home_to_navigation_location"
             app:destination="@id/navigation_location" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_preference_center"
+            app:destination="@id/navigation_preference_center" />
     </fragment>
 
     <fragment
@@ -54,5 +57,11 @@
         android:name="com.optimove.android.optimovemobilesdk.ui.location.LocationFragment"
         android:label="@string/my_location"
         tools:layout="@layout/fragment_location" />
+
+    <fragment
+        android:id="@+id/navigation_preference_center"
+        android:name="com.optimove.android.optimovemobilesdk.ui.preferencecenter.PreferenceCenterFragment"
+        android:label="Preference Center"
+        tools:layout="@layout/fragment_preference_center" />
 
 </navigation>

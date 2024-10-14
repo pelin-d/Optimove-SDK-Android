@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
@@ -12,6 +13,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
@@ -20,12 +22,28 @@ import androidx.core.content.ContextCompat;
 
 import com.optimove.android.Optimove;
 
+import com.optimove.android.OptimoveConfig;
+import com.optimove.android.optimovemobilesdk.constants.Constants;
 import com.optimove.android.optimovemobilesdk.databinding.ActivityMainBinding;
+import com.optimove.android.optimovemobilesdk.ui.preferencecenter.PreferenceCenterViewModel;
+import com.optimove.android.preferencecenter.Channel;
+import com.optimove.android.preferencecenter.OptimovePreferenceCenter;
+import com.optimove.android.preferencecenter.PreferenceUpdate;
+import com.optimove.android.preferencecenter.Preferences;
+import com.optimove.android.preferencecenter.Topic;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
 @SuppressLint("SetTextI18n")
 public class MainActivity extends AppCompatActivity {
 
     private static final int WRITE_EXTERNAL_PERMISSION_REQUEST_CODE = 169;
+    AtomicReference<Preferences> preferences = new AtomicReference<>();
+
+    private PreferenceCenterViewModel preferenceCenterViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +65,99 @@ public class MainActivity extends AppCompatActivity {
 
         //deferred deep links
         Optimove.getInstance().seeIntent(getIntent(), savedInstanceState);
+
+        preferenceCenterViewModel = new ViewModelProvider(this).get(PreferenceCenterViewModel.class);
+        setupPreferenceCenterObservers();
+
+    }
+
+    private void setupPreferenceCenterObservers() {
+        preferenceCenterViewModel.getStandardInitEvent().observe(this, aVoid -> {
+            preferenceCenterStandardInit();
+        });
+        preferenceCenterViewModel.getDelayedInitEvent().observe(this, aVoid -> {
+            preferenceCenterDelayedInit();
+        });
+    }
+
+    private void preferenceCenterStandardInit() {
+        Optimove.initialize(getApplication(), new OptimoveConfig.Builder(Constants.OPTIMOVE_CREDS, Constants.OPTIMOBILE_CREDS)
+                .enablePreferenceCenter(Constants.PREFERENCE_CENTER_CREDENTIALS)
+                .build());
+        preferenceCenterViewModel.onTextChanged("Preference Center Standard Init");
+    }
+
+    private void preferenceCenterDelayedInit() {
+        OptimoveConfig.FeatureSet featureSet = new OptimoveConfig.FeatureSet().withOptimove().withOptimobile().withPreferenceCenter();
+        Optimove.initialize(getApplication(), new OptimoveConfig.Builder(OptimoveConfig.Region.DEV, featureSet).build());
+
+        // time passes...
+        startDelayedInitTimer();
+    }
+
+    private void startDelayedInitTimer() {
+        new CountDownTimer(3000, 1000) { // 3000 milliseconds = 3 seconds
+            public void onTick(long millisUntilFinished) {
+                preferenceCenterViewModel.onTextChanged("Seconds remaining: " + millisUntilFinished / 1000);
+            }
+
+            public void onFinish() {
+                Optimove.setCredentials(
+                        Constants.OPTIMOVE_CREDS,
+                        Constants.OPTIMOBILE_CREDS,
+                        Constants.PREFERENCE_CENTER_CREDENTIALS
+                );
+                preferenceCenterViewModel.onTextChanged("Preference Center Delayed Init finished");
+            }
+        }.start();
+    }
+
+    private void getCustomerPreferences() {
+        OptimovePreferenceCenter.getInstance().getPreferencesAsync((OptimovePreferenceCenter.ResultType result, Preferences fetchPreferences) -> {
+            switch (result) {
+                case ERROR_USER_NOT_SET:
+//TODO handle errors
+                    break;
+                case ERROR_CREDENTIALS_NOT_SET:
+
+                    break;
+                case ERROR:
+
+                    break;
+                case SUCCESS: {
+                    preferences.set(fetchPreferences);
+                    break;
+                }
+            }
+        });
+
+        if (preferences.get() == null) {
+            return;
+        }
+
+        List<Channel> configuredChannels = preferences.get().getConfiguredChannels(); // List<Channel> e.g. MOBILE_PUSH, SMS
+        List<Topic> topics = preferences.get().getCustomerPreferences();
+
+        List<PreferenceUpdate> updates = new ArrayList<>();
+        for (int i = 0; i < topics.size(); i++) {
+            // Note, you can only subscribe to channels that are configured
+            updates.add(new PreferenceUpdate(topics.get(i).getId(), configuredChannels.subList(0, 1)));
+        }
+
+        OptimovePreferenceCenter.getInstance().setCustomerPreferencesAsync((OptimovePreferenceCenter.ResultType setResult) -> {
+            // TODO Handle result;
+        }, updates);
+    }
+
+    private void setCustomerPreferences() {
+        // For updating customer preferences
+        List<PreferenceUpdate> updates = Collections.emptyList();
+
+        OptimovePreferenceCenter
+                .getInstance()
+                .setCustomerPreferencesAsync((OptimovePreferenceCenter.ResultType setResult) -> {
+ // TODO handle new updates
+                }, updates);
     }
 
     @Override

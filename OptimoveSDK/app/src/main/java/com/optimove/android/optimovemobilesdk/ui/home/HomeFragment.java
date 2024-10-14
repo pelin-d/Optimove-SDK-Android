@@ -46,7 +46,8 @@ public class HomeFragment extends BaseFragment implements HomeAdapter.OnItemClic
         List<MenuItem> items = new ArrayList<>();
         items.add(new MenuItem("QA Screen", R.drawable.baseline_dashboard_24, R.id.action_navigation_home_to_navigation_dashboard));
         items.add(new MenuItem("User Info", R.drawable.baseline_person_24, R.id.action_navigation_home_to_navigation_profile));
-        items.add(new MenuItem("Geofencing", R.drawable.baseline_person_24, R.id.action_navigation_home_to_navigation_location));
+        items.add(new MenuItem("Geofencing", R.drawable.baseline_location_pin_24, R.id.action_navigation_home_to_navigation_location));
+        items.add(new MenuItem("Preference Center", R.drawable.baseline_settings_24, R.id.action_navigation_home_to_navigation_preference_center));
 //        items.add(new MenuItem("Gaming", R.drawable.baseline_videogame_asset_24, R.id.action_navigation_home_to_navigation_gaming));
 
         HomeAdapter adapter = new HomeAdapter(items, this);
