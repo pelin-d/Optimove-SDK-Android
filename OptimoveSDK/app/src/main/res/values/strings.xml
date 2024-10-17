@@ -39,4 +39,10 @@
     <string name="latitude">Latitude</string>
     <string name="longitude">Longitude</string>
     <string name="preference_center">Preference Center</string>
+    <string name="subscribed_channels_text">Channels:\n%1$s\n</string>
+    <string name="subscribed_topics_text">Topics:\n%1$s</string>
+    <string name="standard_initialization">Standard Initialization</string>
+    <string name="delayed_initialization">Delayed Initialization</string>
+    <string name="get_preferences">Get Preferences</string>
+
 </resources>

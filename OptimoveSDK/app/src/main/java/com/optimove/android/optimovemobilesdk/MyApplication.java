@@ -9,6 +9,7 @@ import android.provider.Settings;
 
 import com.optimove.android.Optimove;
 import com.optimove.android.OptimoveConfig;
+import com.optimove.android.optimovemobilesdk.constants.Constants;
 
 public class MyApplication extends Application {
 
@@ -30,11 +31,8 @@ public class MyApplication extends Application {
   public void onCreate() {
     super.onCreate();
 
-    String optimoveApiKey = "";
-    String optimobileApiKey = "";
-
     Optimove.initialize(this, new OptimoveConfig.Builder(
-            optimoveApiKey, optimobileApiKey)
+            Constants.OPTIMOVE_CREDS, Constants.OPTIMOBILE_CREDS)
             .enableInAppMessaging(OptimoveConfig.InAppConsentStrategy.AUTO_ENROLL)
             .build());
     // Shouldn't be called unless explicitly told to

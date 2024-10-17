@@ -8,6 +8,7 @@ public class PreferenceCenterViewModel extends ViewModel {
 
     private MutableLiveData<Void> standardInitEvent = new MutableLiveData<>();
     private MutableLiveData<Void> delayedInitEvent = new MutableLiveData<>();
+    private MutableLiveData<Void> preferencesEvent = new MutableLiveData<>();
 
     private final MutableLiveData<String> text = new MutableLiveData<>();
 
@@ -27,12 +28,31 @@ public class PreferenceCenterViewModel extends ViewModel {
         delayedInitEvent.setValue(null);
     }
 
+    public LiveData<Void> getPreferencesEvent() {
+        return preferencesEvent;
+    }
+
+    public void onPreferencesClick() {
+        preferencesEvent.setValue(null);
+    }
+
     public LiveData<String> getText() {
         return text;
     }
 
-    public void onTextChanged(String message) {
-        text.setValue(message);
+    public void onTextChanged(String message, TextChange state) {
+        switch (state) {
+            case APPEND:
+                text.setValue(text.getValue() + "\n" + message);
+                break;
+            case REPLACE:
+                text.setValue(message);
+        }
+    }
+
+    public enum TextChange {
+        APPEND,
+        REPLACE,
     }
 
 

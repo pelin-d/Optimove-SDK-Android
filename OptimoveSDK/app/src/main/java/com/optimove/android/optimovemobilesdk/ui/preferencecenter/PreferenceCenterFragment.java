@@ -28,6 +28,7 @@ public class PreferenceCenterFragment extends BaseFragment {
 
         binding.standardInitButton.setOnClickListener(v -> viewModel.onStandardInitClick());
         binding.delayedInitButton.setOnClickListener(v -> viewModel.onDelayedInitClick());
+        binding.getCustomerPrefsButton.setOnClickListener(v -> viewModel.onPreferencesClick());
 
         viewModel.getText().observe(getViewLifecycleOwner(), newText -> {
             binding.contentText.setText(newText);
