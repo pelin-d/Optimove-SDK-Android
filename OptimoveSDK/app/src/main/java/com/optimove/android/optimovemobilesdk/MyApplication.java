@@ -10,6 +10,7 @@ import android.provider.Settings;
 import com.optimove.android.Optimove;
 import com.optimove.android.OptimoveConfig;
 import com.optimove.android.optimovemobilesdk.constants.Constants;
+import com.optimove.android.optimovemobilesdk.constants.Credentials;
 
 public class MyApplication extends Application {
 
@@ -32,7 +33,7 @@ public class MyApplication extends Application {
     super.onCreate();
 
     Optimove.initialize(this, new OptimoveConfig.Builder(
-            Constants.OPTIMOVE_CREDS, Constants.OPTIMOBILE_CREDS)
+            Credentials.OPTIMOVE_CREDS, Credentials.OPTIMOBILE_CREDS)
             .enableInAppMessaging(OptimoveConfig.InAppConsentStrategy.AUTO_ENROLL)
             .build());
     // Shouldn't be called unless explicitly told to

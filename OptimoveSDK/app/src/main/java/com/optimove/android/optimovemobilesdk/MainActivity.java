@@ -27,7 +27,7 @@ import com.google.gson.GsonBuilder;
 import com.optimove.android.Optimove;
 
 import com.optimove.android.OptimoveConfig;
-import com.optimove.android.optimovemobilesdk.constants.Constants;
+import com.optimove.android.optimovemobilesdk.constants.Credentials;
 import com.optimove.android.optimovemobilesdk.databinding.ActivityMainBinding;
 import com.optimove.android.optimovemobilesdk.ui.preferencecenter.PreferenceCenterViewModel;
 import com.optimove.android.preferencecenter.Channel;
@@ -88,8 +88,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void preferenceCenterStandardInit() {
-        Optimove.initialize(getApplication(), new OptimoveConfig.Builder(Constants.OPTIMOVE_CREDS, Constants.OPTIMOBILE_CREDS)
-                .enablePreferenceCenter(Constants.PREFERENCE_CENTER_CREDENTIALS)
+        Optimove.initialize(getApplication(), new OptimoveConfig.Builder(Credentials.OPTIMOVE_CREDS, Credentials.OPTIMOBILE_CREDS)
+                .enablePreferenceCenter(Credentials.PREFERENCE_CENTER_CREDS)
                 .build());
         preferenceCenterViewModel.onTextChanged("Preference Center Standard Init", TextChange.REPLACE);
     }
@@ -110,9 +110,9 @@ public class MainActivity extends AppCompatActivity {
 
             public void onFinish() {
                 Optimove.setCredentials(
-                        Constants.OPTIMOVE_CREDS,
-                        Constants.OPTIMOBILE_CREDS,
-                        Constants.PREFERENCE_CENTER_CREDENTIALS
+                        Credentials.OPTIMOVE_CREDS,
+                        Credentials.OPTIMOBILE_CREDS,
+                        Credentials.PREFERENCE_CENTER_CREDS
                 );
                 preferenceCenterViewModel.onTextChanged("Preference Center Delayed Init finished", TextChange.REPLACE);
             }
