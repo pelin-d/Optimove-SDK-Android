@@ -9,7 +9,6 @@ import android.provider.Settings;
 
 import com.optimove.android.Optimove;
 import com.optimove.android.OptimoveConfig;
-import com.optimove.android.optimovemobilesdk.constants.Constants;
 import com.optimove.android.optimovemobilesdk.constants.Credentials;
 
 public class MyApplication extends Application {

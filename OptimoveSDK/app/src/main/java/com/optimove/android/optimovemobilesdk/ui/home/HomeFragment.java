@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,17 +17,13 @@ import com.optimove.android.optimovemobilesdk.ui.BaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 public class HomeFragment extends BaseFragment implements HomeAdapter.OnItemClickListener {
 
     private FragmentHomeBinding binding;
-    HomeViewModel homeViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-
-        homeViewModel = new ViewModelProvider(requireActivity()).get(HomeViewModel.class);
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
@@ -48,7 +43,6 @@ public class HomeFragment extends BaseFragment implements HomeAdapter.OnItemClic
         items.add(new MenuItem("User Info", R.drawable.baseline_person_24, R.id.action_navigation_home_to_navigation_profile));
         items.add(new MenuItem("Geofencing", R.drawable.baseline_location_pin_24, R.id.action_navigation_home_to_navigation_location));
         items.add(new MenuItem("Preference Center", R.drawable.baseline_settings_24, R.id.action_navigation_home_to_navigation_preference_center));
-//        items.add(new MenuItem("Gaming", R.drawable.baseline_videogame_asset_24, R.id.action_navigation_home_to_navigation_gaming));
 
         HomeAdapter adapter = new HomeAdapter(items, this);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));

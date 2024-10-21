@@ -11,9 +11,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.res.ResourcesCompat;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.button.MaterialButton;
 import com.optimove.android.optimovemobilesdk.R;
@@ -26,20 +24,17 @@ import java.util.Random;
 public class GamingFragment extends BaseFragment {
 
     private FragmentGamingBinding binding;
-    private static Random random = new Random();
+    private static final Random random = new Random();
     ImageView imageView;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        GamingViewModel gamingViewModel =
-                new ViewModelProvider(this).get(GamingViewModel.class);
 
         binding = FragmentGamingBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         imageView = binding.diceImage;
         MaterialButton rollDiceButton = binding.rollDiceButton;
-        ConstraintLayout dicehintButton = binding.diceHintButton;
 
         rollDiceButton.setOnClickListener(this::rollDice);
 

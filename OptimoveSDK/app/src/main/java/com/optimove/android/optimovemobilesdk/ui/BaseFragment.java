@@ -1,20 +1,19 @@
 package com.optimove.android.optimovemobilesdk.ui;
 
-import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.optimove.android.Optimove;
 import com.optimove.android.optimovemobilesdk.EventReport;
 import com.optimove.android.optimovemobilesdk.SimpleCustomEvent;
 import com.optimove.android.optimovemobilesdk.constants.Constants;
+
+import java.util.List;
 
 public class BaseFragment extends Fragment {
 
@@ -58,17 +57,22 @@ public class BaseFragment extends Fragment {
         EventReport.runFromWorker(() -> Optimove.getInstance().reportEvent("Event_No ParaMs     "));
     }
 
+    public String jsonToPrettyString(List<?> topics) {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        return gson.toJson(topics);
+    }
+
     public void showMessage(View v, String message) {
         if (message == null) return;
         Snackbar.make(v, message, Snackbar.LENGTH_SHORT).show();
     }
 
-//    public void showMessageWithAction(String message, String actionMessage) {
-//        Snackbar.make(binding.getRoot(), message, Snackbar.LENGTH_LONG)
-//                .setAction(actionMessage, view -> {
-//
-//                })
-//                .show();
-//    }
+    public void showMessageWithAction(View v, String message, String actionMessage) {
+        Snackbar.make(v, message, Snackbar.LENGTH_LONG)
+                .setAction(actionMessage, view -> {
+
+                })
+                .show();
+    }
 
 }

@@ -13,14 +13,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.optimove.android.optimovemobilesdk.R;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
-    private List<MenuItem> items;
-    private OnItemClickListener mListener;
+    private final AtomicReference<List<MenuItem>> items = new AtomicReference<>();
+    private final OnItemClickListener mListener;
 
     public HomeAdapter(List<MenuItem> items, OnItemClickListener listener) {
-        this.items = items;
+        this.items.set(items);
         this.mListener = listener;
     }
 
@@ -35,12 +36,10 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull HomeAdapter.ViewHolder holder, int position) {
 
-        holder.getPageIcon().setBackgroundResource(items.get(position).getImage());
-        holder.getTitleText().setText(items.get(position).getText());
+        holder.getPageIcon().setBackgroundResource(items.get().get(position).getImage());
+        holder.getTitleText().setText(items.get().get(position).getText());
 
-        holder.getTitleLayout().setOnClickListener(v -> {
-            mListener.onClick(items.get(position));
-        });
+        holder.getTitleLayout().setOnClickListener(v -> mListener.onClick(items.get().get(position)));
 
     }
 
@@ -50,7 +49,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return items.size();
+        return items.get().size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
