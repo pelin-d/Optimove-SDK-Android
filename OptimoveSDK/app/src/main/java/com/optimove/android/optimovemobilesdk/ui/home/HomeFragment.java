@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.optimove.android.optimovemobilesdk.R;
 import com.optimove.android.optimovemobilesdk.databinding.FragmentHomeBinding;
-import com.optimove.android.optimovemobilesdk.ui.BaseFragment;
+import com.optimove.android.optimovemobilesdk.BaseFragment;
 
 import java.util.ArrayList;
 import java.util.List;

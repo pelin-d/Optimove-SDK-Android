@@ -1,4 +1,4 @@
-package com.optimove.android.optimovemobilesdk.ui;
+package com.optimove.android.optimovemobilesdk;
 
 import android.util.Log;
 import android.view.View;
@@ -9,8 +9,6 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.optimove.android.Optimove;
-import com.optimove.android.optimovemobilesdk.EventReport;
-import com.optimove.android.optimovemobilesdk.SimpleCustomEvent;
 import com.optimove.android.optimovemobilesdk.constants.Constants;
 
 import java.util.List;

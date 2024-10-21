@@ -17,7 +17,7 @@ import com.optimove.android.optimobile.OptimoveInApp;
 import com.optimove.android.optimovemobilesdk.SimpleCustomEvent;
 import com.optimove.android.optimovemobilesdk.constants.Constants;
 import com.optimove.android.optimovemobilesdk.databinding.FragmentDashboardBinding;
-import com.optimove.android.optimovemobilesdk.ui.BaseFragment;
+import com.optimove.android.optimovemobilesdk.BaseFragment;
 import com.optimove.android.preferencecenter.Channel;
 import com.optimove.android.preferencecenter.OptimovePreferenceCenter;
 import com.optimove.android.preferencecenter.PreferenceUpdate;

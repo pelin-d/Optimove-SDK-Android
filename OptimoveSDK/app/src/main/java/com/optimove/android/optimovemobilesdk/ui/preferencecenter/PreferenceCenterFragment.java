@@ -7,14 +7,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.optimove.android.Optimove;
 import com.optimove.android.OptimoveConfig;
 import com.optimove.android.optimovemobilesdk.R;
 import com.optimove.android.optimovemobilesdk.constants.Credentials;
 import com.optimove.android.optimovemobilesdk.databinding.FragmentPreferenceCenterBinding;
-import com.optimove.android.optimovemobilesdk.ui.BaseFragment;
+import com.optimove.android.optimovemobilesdk.BaseFragment;
 import com.optimove.android.preferencecenter.Channel;
 import com.optimove.android.preferencecenter.OptimovePreferenceCenter;
 import com.optimove.android.preferencecenter.PreferenceUpdate;

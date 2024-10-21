@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import com.google.android.material.button.MaterialButton;
 import com.optimove.android.Optimove;
 import com.optimove.android.optimovemobilesdk.databinding.FragmentProfileBinding;
-import com.optimove.android.optimovemobilesdk.ui.BaseFragment;
+import com.optimove.android.optimovemobilesdk.BaseFragment;
 
 import java.util.Objects;
 

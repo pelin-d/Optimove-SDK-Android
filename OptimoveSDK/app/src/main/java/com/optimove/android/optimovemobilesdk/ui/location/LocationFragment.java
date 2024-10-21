@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 
 import com.optimove.android.Optimove;
 import com.optimove.android.optimovemobilesdk.databinding.FragmentLocationBinding;
-import com.optimove.android.optimovemobilesdk.ui.BaseFragment;
+import com.optimove.android.optimovemobilesdk.BaseFragment;
 
 import java.util.Objects;
 

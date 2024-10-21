@@ -17,7 +17,7 @@ import com.google.android.material.button.MaterialButton;
 import com.optimove.android.optimovemobilesdk.R;
 import com.optimove.android.optimovemobilesdk.constants.Constants;
 import com.optimove.android.optimovemobilesdk.databinding.FragmentGamingBinding;
-import com.optimove.android.optimovemobilesdk.ui.BaseFragment;
+import com.optimove.android.optimovemobilesdk.BaseFragment;
 
 import java.util.Random;
 

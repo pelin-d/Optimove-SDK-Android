@@ -17,7 +17,7 @@ import com.optimove.android.optimobile.InAppInboxItem;
 import com.optimove.android.optimobile.OptimoveInApp;
 import com.optimove.android.optimovemobilesdk.constants.Constants;
 import com.optimove.android.optimovemobilesdk.databinding.FragmentInboxBinding;
-import com.optimove.android.optimovemobilesdk.ui.BaseFragment;
+import com.optimove.android.optimovemobilesdk.BaseFragment;
 
 import java.util.ArrayList;
 import java.util.Collection;
