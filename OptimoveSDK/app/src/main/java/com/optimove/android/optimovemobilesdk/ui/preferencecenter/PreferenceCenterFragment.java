@@ -41,7 +41,6 @@ public class PreferenceCenterFragment extends BaseFragment {
         binding.delayedInitButton.setOnClickListener(v -> preferenceCenterDelayedInit());
         binding.getCustomerPrefsButton.setOnClickListener(v -> {
             fetchCustomerPreferences();
-            displayCustomerPreferences();
         });
 
         return root;
@@ -64,6 +63,7 @@ public class PreferenceCenterFragment extends BaseFragment {
 
     private void startDelayedInitTimer() {
         new CountDownTimer(3000, 1000) { // 3000 milliseconds = 3 seconds
+
             public void onTick(long millisUntilFinished) {
                 setDisplayText("Seconds remaining: " + millisUntilFinished / 1000, TextChange.REPLACE);
             }
@@ -76,6 +76,7 @@ public class PreferenceCenterFragment extends BaseFragment {
                 );
                 setDisplayText("Preference Center Delayed Init finished", TextChange.REPLACE);
             }
+
         }.start();
     }
 
@@ -93,6 +94,7 @@ public class PreferenceCenterFragment extends BaseFragment {
                     break;
                 case SUCCESS: {
                     preferences.set(fetchPreferences);
+                    displayCustomerPreferences();
                     break;
                 }
             }
