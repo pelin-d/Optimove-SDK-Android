@@ -8,8 +8,6 @@ import android.os.Build;
 import android.provider.Settings;
 
 import com.optimove.android.Optimove;
-import com.optimove.android.OptimoveConfig;
-import com.optimove.android.optimovemobilesdk.constants.Credentials;
 
 public class MyApplication extends Application {
 
@@ -25,19 +23,5 @@ public class MyApplication extends Application {
     intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
     intent.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
     context.startActivity(intent);
-  }
-
-  @Override
-  public void onCreate() {
-    super.onCreate();
-
-    Optimove.initialize(this, new OptimoveConfig.Builder(
-            Credentials.OPTIMOVE_CREDS, Credentials.OPTIMOBILE_CREDS)
-            .enableInAppMessaging(OptimoveConfig.InAppConsentStrategy.AUTO_ENROLL)
-            .build());
-    // Shouldn't be called unless explicitly told to
-    Optimove.enableStagingRemoteLogs();
-
-    Optimove.getInstance().pushRequestDeviceToken();
   }
 }

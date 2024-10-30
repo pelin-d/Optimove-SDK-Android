@@ -3,7 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_initialisation">
+
+    <fragment
+        android:id="@+id/navigation_initialisation"
+        android:name="com.optimove.android.optimovemobilesdk.ui.initialisation.InitialisationFragment"
+        android:label="@string/initialisation"
+        tools:layout="@layout/fragment_initialisation" >
+        <action
+            android:id="@+id/action_navigation_initialisation_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_home"
@@ -15,7 +25,7 @@
             app:destination="@id/navigation_gaming" />
         <action
             android:id="@+id/action_navigation_home_to_navigation_profile"
-            app:destination="@id/navigation_profile" />
+            app:destination="@id/navigation_credentials" />
         <action
             android:id="@+id/action_navigation_home_to_navigation_dashboard"
             app:destination="@id/navigation_dashboard" />
@@ -41,10 +51,10 @@
         tools:layout="@layout/fragment_inbox" />
 
     <fragment
-        android:id="@+id/navigation_profile"
-        android:name="com.optimove.android.optimovemobilesdk.ui.profile.ProfileFragment"
-        android:label="@string/profile"
-        tools:layout="@layout/fragment_profile" />
+        android:id="@+id/navigation_credentials"
+        android:name="com.optimove.android.optimovemobilesdk.ui.credentials.CredentialsFragment"
+        android:label="@string/credentials"
+        tools:layout="@layout/fragment_credentials" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
@@ -61,7 +71,7 @@
     <fragment
         android:id="@+id/navigation_preference_center"
         android:name="com.optimove.android.optimovemobilesdk.ui.preferencecenter.PreferenceCenterFragment"
-        android:label="Preference Center"
+        android:label="@string/preference_center"
         tools:layout="@layout/fragment_preference_center" />
 
 </navigation>

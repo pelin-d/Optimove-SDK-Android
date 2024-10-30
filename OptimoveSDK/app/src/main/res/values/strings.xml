@@ -34,7 +34,7 @@
     <string name="ok">OK</string>
     <string name="indicator">indicator</string>
     <string name="page_icon">Page icon</string>
-    <string name="user_info">User Info</string>
+    <string name="credentials">Credentials</string>
     <string name="my_location">My Location</string>
     <string name="latitude">Latitude</string>
     <string name="longitude">Longitude</string>
@@ -44,5 +44,9 @@
     <string name="standard_initialization">Standard Initialization</string>
     <string name="delayed_initialization">Delayed Initialization</string>
     <string name="get_preferences">Get Preferences</string>
+    <string name="initialisation">Initialisation</string>
+    <string name="choose_initialisation_type">Choose Initialisation Type</string>
+    <string name="late_initialisation">Late Initialisation</string>
+    <string name="standard_initialisation">Standard Initialisation</string>
 
 </resources>

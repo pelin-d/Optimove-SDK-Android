@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
@@ -11,6 +12,7 @@ import androidx.navigation.ui.NavigationUI;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
@@ -19,11 +21,15 @@ import androidx.core.content.ContextCompat;
 
 import com.optimove.android.Optimove;
 
+import com.optimove.android.optimovemobilesdk.constants.Constants;
 import com.optimove.android.optimovemobilesdk.databinding.ActivityMainBinding;
+import com.optimove.android.optimovemobilesdk.ui.initialisation.InitialisationViewModel;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final int WRITE_EXTERNAL_PERMISSION_REQUEST_CODE = 169;
+    private InitialisationViewModel initViewModel;
+    private boolean isInitialised = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,24 +49,40 @@ public class MainActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, WRITE_EXTERNAL_PERMISSION_REQUEST_CODE);
         }
 
-        //deferred deep links
-        Optimove.getInstance().seeIntent(getIntent(), savedInstanceState);
+        initViewModel = new ViewModelProvider(this).get(InitialisationViewModel.class);
+
+        initViewModel.getUiState().observe(this, uiState -> {
+            if (uiState.isInitialised()) {
+                isInitialised = true;
+
+                Log.d(Constants.TAG, "init");
+
+                //deferred deep links
+                Optimove.getInstance().seeIntent(getIntent(), savedInstanceState);
+
+                initViewModel.getUiState().removeObservers(this);
+            }
+        });
 
     }
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
 
-        //deferred deep links
-        Optimove.getInstance().seeInputFocus(hasFocus);
+        if (isInitialised) {
+            //deferred deep links
+            Optimove.getInstance().seeInputFocus(hasFocus);
+        }
     }
 
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
 
-        //deferred deep links
-        Optimove.getInstance().seeIntent(intent);
+        if (isInitialised) {
+            //deferred deep links
+            Optimove.getInstance().seeIntent(intent);
+        }
     }
 
     public static void hideKeyboard(Activity activity) {
