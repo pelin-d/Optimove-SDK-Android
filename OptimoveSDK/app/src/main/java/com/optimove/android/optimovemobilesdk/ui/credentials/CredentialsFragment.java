@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.google.android.material.button.MaterialButton;
 import com.optimove.android.Optimove;
 import com.optimove.android.optimovemobilesdk.constants.Credentials;
 import com.optimove.android.optimovemobilesdk.databinding.FragmentCredentialsBinding;
