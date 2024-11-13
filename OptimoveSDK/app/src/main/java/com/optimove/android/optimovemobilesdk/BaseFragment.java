@@ -4,6 +4,7 @@ import android.util.Log;
 import android.view.View;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
@@ -46,6 +47,10 @@ public class BaseFragment extends Fragment {
      */
     public void setScreenInfo(String screenName) {
         setScreenInfo(screenName, null);
+    }
+
+    public void goBack(View v) {
+        Navigation.findNavController(v).popBackStack();
     }
 
     public void reportEvent(View v) {

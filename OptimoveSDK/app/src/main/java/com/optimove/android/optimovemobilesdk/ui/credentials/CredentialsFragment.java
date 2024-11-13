@@ -30,8 +30,8 @@ public class CredentialsFragment extends BaseFragment {
         setScreenInfo("Credentials");
 
         binding.buttonUpdateUser.setOnClickListener(v -> updateUserId());
-
         binding.buttonInit.setOnClickListener(v -> lateInitialisation());
+        binding.backButton.setOnClickListener(this::goBack);
 
         initViewModel = new ViewModelProvider(requireActivity()).get(InitialisationViewModel.class);
 

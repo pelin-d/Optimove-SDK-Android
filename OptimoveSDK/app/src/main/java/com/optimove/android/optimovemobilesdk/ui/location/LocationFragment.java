@@ -35,6 +35,7 @@ public class LocationFragment extends BaseFragment implements LocationAdapter.On
         View root = binding.getRoot();
 
         binding.updateButton.setOnClickListener(this::getLocation);
+        binding.backButton.setOnClickListener(this::goBack);
 
         setScreenInfo("Location");
 

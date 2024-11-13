@@ -39,9 +39,8 @@ public class PreferenceCenterFragment extends BaseFragment {
 
         binding.standardInitButton.setOnClickListener(v -> preferenceCenterStandardInit());
         binding.delayedInitButton.setOnClickListener(v -> preferenceCenterDelayedInit());
-        binding.getCustomerPrefsButton.setOnClickListener(v -> {
-            fetchCustomerPreferences();
-        });
+        binding.getCustomerPrefsButton.setOnClickListener(v -> fetchCustomerPreferences());
+        binding.backButton.setOnClickListener(this::goBack);
 
         return root;
     }

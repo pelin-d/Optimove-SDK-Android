@@ -48,5 +48,6 @@
     <string name="choose_initialisation_type">Choose Initialisation Type</string>
     <string name="late_initialisation">Late Initialisation</string>
     <string name="standard_initialisation">Standard Initialisation</string>
+    <string name="back_button">Back button</string>
 
 </resources>

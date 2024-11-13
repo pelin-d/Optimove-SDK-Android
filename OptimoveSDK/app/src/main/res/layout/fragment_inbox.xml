@@ -8,23 +8,23 @@
     tools:context=".ui.inbox.InboxFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/inbox_title_layout"
+        android:id="@+id/title_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
+        android:paddingVertical="32dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/inbox_title"
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/inbox"
             android:textAppearance="@style/Title"
-            android:layout_marginTop="48dp"
-            android:layout_marginBottom="48dp"
             android:layout_marginStart="32dp"
+            android:layout_marginVertical="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -61,7 +61,7 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inbox_title_layout">
+        app:layout_constraintTop_toBottomOf="@+id/title_layout">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
