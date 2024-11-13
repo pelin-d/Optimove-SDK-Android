@@ -1,5 +1,6 @@
 package com.optimove.android.optimovemobilesdk.ui.dashboard;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,7 +15,7 @@ import androidx.annotation.NonNull;
 import com.optimove.android.Optimove;
 import com.optimove.android.optimobile.InAppInboxItem;
 import com.optimove.android.optimobile.OptimoveInApp;
-import com.optimove.android.optimovemobilesdk.SimpleCustomEvent;
+import com.optimove.android.optimovemobilesdk.CustomComplexEvent;
 import com.optimove.android.optimovemobilesdk.constants.Constants;
 import com.optimove.android.optimovemobilesdk.databinding.FragmentDashboardBinding;
 import com.optimove.android.optimovemobilesdk.BaseFragment;
@@ -62,15 +63,17 @@ public class DashboardFragment extends BaseFragment {
         binding.submitCredentialsBtn.setOnClickListener(this::setCredentials);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void reportEvent(View view) {
         if (view == null)
             return;
-        outputTv.setText("Reporting Custom Event for Visitor without optional value");
-        runFromWorker(() -> Optimove.getInstance().reportEvent(new SimpleCustomEvent()));
-        runFromWorker(() -> Optimove.getInstance().reportEvent("Event_No ParaMs     "));
+        outputTv.setText("Reporting Simple & Custom Events for Visitor without optional value");
+        runFromWorker(() -> Optimove.getInstance().reportEvent(new CustomComplexEvent()));
+        runFromWorker(() -> Optimove.getInstance().reportEvent("custom_simple_event"));
     }
 
+    @SuppressLint("SetTextI18n")
     private void updateUserId(View view) {
         EditText uidInput = binding.userIdInput;
         EditText emailInput = binding.userEmailInput;

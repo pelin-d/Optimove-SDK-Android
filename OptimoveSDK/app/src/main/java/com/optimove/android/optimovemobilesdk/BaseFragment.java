@@ -50,9 +50,9 @@ public class BaseFragment extends Fragment {
 
     public void reportEvent(View v) {
         if (v == null) return;
-        showMessage(v, "Reporting Custom Event for Visitor without optional value");
-        EventReport.runFromWorker(() -> Optimove.getInstance().reportEvent(new SimpleCustomEvent()));
-        EventReport.runFromWorker(() -> Optimove.getInstance().reportEvent("Event_No ParaMs     "));
+        showMessage(v, "Reporting Simple & Custom Events for Visitor without optional value");
+        EventReport.runFromWorker(() -> Optimove.getInstance().reportEvent(new CustomComplexEvent()));
+        EventReport.runFromWorker(() -> Optimove.getInstance().reportEvent("custom_simple_event"));
     }
 
     public String jsonToPrettyString(List<?> topics) {
