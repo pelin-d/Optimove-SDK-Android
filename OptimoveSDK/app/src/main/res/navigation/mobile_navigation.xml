@@ -35,6 +35,9 @@
         <action
             android:id="@+id/action_navigation_home_to_navigation_preference_center"
             app:destination="@id/navigation_preference_center" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_inbox"
+            app:destination="@id/navigation_inbox" />
     </fragment>
 
     <fragment

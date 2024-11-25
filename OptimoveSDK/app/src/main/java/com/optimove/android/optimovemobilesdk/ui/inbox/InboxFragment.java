@@ -54,6 +54,8 @@ public class InboxFragment extends BaseFragment implements InboxAdapter.OnItemCl
             setRecyclerView(root.getContext());
         });
 
+        binding.backButton.setOnClickListener(this::goBack);
+
         return root;
     }
 

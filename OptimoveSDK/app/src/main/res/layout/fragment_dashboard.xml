@@ -14,15 +14,36 @@
         android:layout_gravity="top"
         android:orientation="vertical">
 
-
-        <TextView
-            android:id="@+id/userIdTextView"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:gravity="center"
-            android:text="@string/welcome_message"
-            android:textSize="16sp" />
+            android:layout_gravity="top"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/back_button"
+                android:padding="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:contentDescription="@string/back_button"
+                    android:src="@drawable/baseline_arrow_back_24" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/userIdTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:gravity="center"
+                android:text="@string/welcome_message"
+                android:textSize="16sp" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"

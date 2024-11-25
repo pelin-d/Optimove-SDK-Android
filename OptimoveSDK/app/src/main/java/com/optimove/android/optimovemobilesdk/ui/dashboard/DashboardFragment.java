@@ -61,6 +61,7 @@ public class DashboardFragment extends BaseFragment {
         binding.getPreferences.setOnClickListener(this::getPreferences);
         binding.setPreferences.setOnClickListener(this::setPreferences);
         binding.submitCredentialsBtn.setOnClickListener(this::setCredentials);
+        binding.backButton.setOnClickListener(this::goBack);
     }
 
     @SuppressLint("SetTextI18n")
